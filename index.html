@@ -410,6 +410,143 @@
             }
         }
 
+/* ==============================
+   TASTE PICKER
+============================== */
+
+.taste-picker {
+    background: #fffaf0;
+    padding: 100px 8%;
+    text-align: center;
+}
+
+.taste-picker .section-label {
+    color: #d96b45;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.taste-picker h2 {
+    color: #49352b;
+    font-size: 34px;
+    margin-bottom: 15px;
+}
+
+.taste-picker > p {
+    color: #88776b;
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+.taste-box {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 45px;
+    background: #ffffff;
+    border-radius: 25px;
+    box-shadow: 0 10px 35px rgba(90, 60, 40, 0.07);
+    text-align: left;
+}
+
+.taste-box h3 {
+    color: #49352b;
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.taste-box h3:first-child {
+    margin-top: 0;
+}
+
+.taste-box p {
+    color: #a18e80;
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+
+.taste-item {
+    margin-bottom: 23px;
+}
+
+.taste-item label {
+    display: flex;
+    justify-content: space-between;
+    color: #574438;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.taste-item label span {
+    color: #d96b45;
+    font-weight: 700;
+}
+
+.taste-item input[type="range"] {
+    width: 100%;
+    accent-color: #d96b45;
+    cursor: pointer;
+}
+
+#taste-keyword {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px 18px;
+    border: 1px solid #eee3d7;
+    border-radius: 12px;
+    background: #fffdf9;
+    font-size: 14px;
+    outline: none;
+    margin-bottom: 25px;
+}
+
+#taste-keyword:focus {
+    border-color: #d96b45;
+}
+
+#recommend-button {
+    width: 100%;
+    padding: 17px;
+    background: #d96b45;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#recommend-button:hover {
+    background: #bd5735;
+    transform: translateY(-2px);
+}
+
+#recommend-result {
+    max-width: 650px;
+    margin: 35px auto 0;
+    text-align: left;
+}
+
+@media (max-width: 600px) {
+    .taste-picker {
+        padding: 70px 5%;
+    }
+
+    .taste-picker h2 {
+        font-size: 25px;
+    }
+
+    .taste-box {
+        padding: 25px 20px;
+    }
+}
+        
     </style>
 
 </head>
@@ -428,9 +565,11 @@
 
         <nav>
             <a href="#">HOME</a>
-            <a href="#meals">TODAY'S MEAL</a>
-            <a href="#diary">MY DIARY</a>
-            <a href="#gallery">GALLERY</a>
+            <a href="#diary">FOOD DIARY</a>
+            <a href="#archive">TASTE ARCHIVE</a>
+            <a href="#first-taste">FIRST TASTE</a>
+            <a href="#my-tummy">MY TUMMY</a>
+            <a href="#taste-picker">TASTE PICKER</a>
         </nav>
 
         <button class="write-button">
@@ -620,7 +759,65 @@
 
     </section>
 
+<section id="taste-picker" class="taste-picker">
 
+    <div class="section-label">FIND YOUR TASTE</div>
+
+    <h2>WHAT SHOULD I EAT TODAY?</h2>
+
+    <p>
+        오늘은 어떤 맛이 끌리나요?<br>
+        원하는 맛을 선택하고 나만의 음식을 찾아보세요.
+    </p>
+
+    <div class="taste-box">
+
+        <h3>01. CHOOSE YOUR TASTE</h3>
+        <p>오늘 원하는 맛의 비율을 선택해 주세요.</p>
+
+        <div class="taste-item">
+            <label for="sweet">🍯 단맛 <span id="sweet-value">20%</span></label>
+            <input type="range" id="sweet" min="0" max="100" value="20">
+        </div>
+
+        <div class="taste-item">
+            <label for="salty">🧂 짠맛 <span id="salty-value">20%</span></label>
+            <input type="range" id="salty" min="0" max="100" value="20">
+        </div>
+
+        <div class="taste-item">
+            <label for="spicy">🌶️ 매운맛 <span id="spicy-value">20%</span></label>
+            <input type="range" id="spicy" min="0" max="100" value="20">
+        </div>
+
+        <div class="taste-item">
+            <label for="sour">🍋 신맛 <span id="sour-value">20%</span></label>
+            <input type="range" id="sour" min="0" max="100" value="20">
+        </div>
+
+        <div class="taste-item">
+            <label for="savory">🧀 고소함 <span id="savory-value">20%</span></label>
+            <input type="range" id="savory" min="0" max="100" value="20">
+        </div>
+
+        <h3>02. DESCRIBE YOUR TASTE</h3>
+        <p>원하는 맛이나 식감을 자유롭게 적어주세요.</p>
+
+        <input
+            type="text"
+            id="taste-keyword"
+            placeholder="예: 얼큰한, 바삭한, 새콤한..."
+        >
+
+        <button type="button" id="recommend-button">
+            FIND MY FOOD →
+        </button>
+
+    </div>
+
+    <div id="recommend-result"></div>
+
+</section>
 
     <!-- FOOTER -->
 
